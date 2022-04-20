@@ -1,9 +1,8 @@
 package kimoror.siam.models;
 
-import kimoror.siam.rest.requests.UserInfoRequest;
+import kimoror.siam.rest.dto.UserInfoDto;
 
 import javax.persistence.*;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
 
@@ -26,7 +25,7 @@ public class UserInfo {
     private String middleName;
 
     @Column(name = "birthday", nullable = false)
-    private LocalDate birhthday;
+    private LocalDate birthday;
 
     @Column(name = "address")
     private String address;
@@ -59,7 +58,7 @@ public class UserInfo {
         this.name = name;
         this.surname = surname;
         this.middleName = middleName;
-        this.birhthday = birhthday;
+        this.birthday = birhthday;
         this.address = address;
         this.status = status;
         this.company_id = company_id;
@@ -74,10 +73,114 @@ public class UserInfo {
 
     }
 
-    public static UserInfo infoFromRequest(long id,UserInfoRequest userInfoRequest) throws ParseException {
-        return new UserInfo(id, userInfoRequest.name(), userInfoRequest.surname(), userInfoRequest.middleName(),
-                LocalDate.parse(userInfoRequest.birthday()), userInfoRequest.address(), userInfoRequest.status(),
-                userInfoRequest.company_id(), userInfoRequest.workPosition(), userInfoRequest.education(),
-                userInfoRequest.school(), userInfoRequest.university(), userInfoRequest.phoneNumber());
+    public static UserInfo infoFromRequest(long id, UserInfoDto userInfoDto) throws ParseException {
+        return new UserInfo(id, userInfoDto.getName(), userInfoDto.getSurname(), userInfoDto.getMiddleName(),
+                LocalDate.parse(userInfoDto.getName()), userInfoDto.getAddress(), userInfoDto.getStatus(),
+                userInfoDto.getCompany_id(), userInfoDto.getWorkPosition(), userInfoDto.getEducation(),
+                userInfoDto.getSchool(), userInfoDto.getUniversity(), userInfoDto.getPhoneNumber());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birhthday) {
+        this.birthday = birhthday;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Long getCompany_id() {
+        return company_id;
+    }
+
+    public void setCompany_id(Long company_id) {
+        this.company_id = company_id;
+    }
+
+    public String getWorkPosition() {
+        return workPosition;
+    }
+
+    public void setWorkPosition(String workPosition) {
+        this.workPosition = workPosition;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

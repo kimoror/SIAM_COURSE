@@ -66,4 +66,10 @@ public class PostService {
         return ResponseEntity.ok(new BaseResponse<>(ResponseValues.SUCCESSES.getErrorCode(),
                 ResponseValues.SUCCESSES.getErrorMessage(), posts));
     }
+
+    public ResponseEntity<?> deletePost(String id){
+        postRepository.deleteById(id);
+        return ResponseEntity.ok(new BaseResponse<>(ResponseValues.SUCCESSES.getErrorCode(),
+                ResponseValues.SUCCESSES.getErrorMessage()));
+    }
 }

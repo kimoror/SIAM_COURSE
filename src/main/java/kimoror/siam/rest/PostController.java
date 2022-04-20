@@ -27,4 +27,9 @@ public class PostController {
         return postService.getAllCurrentUserPosts();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable String id){
+        return postService.deletePost(id);
+    }
+
 }

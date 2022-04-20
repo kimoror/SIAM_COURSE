@@ -19,6 +19,9 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api:3.0.0")
     implementation("org.springframework.boot:spring-boot-starter-security:2.5.6")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb:2.5.6")
+    implementation("org.mapstruct:mapstruct:1.4.2.Final")
+
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
 
     implementation("io.jsonwebtoken:jjwt:0.9.1")
     implementation("javax.xml.bind:jaxb-api:2.4.0-b180830.0359")

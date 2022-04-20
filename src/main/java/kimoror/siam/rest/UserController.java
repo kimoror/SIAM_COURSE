@@ -1,7 +1,7 @@
 package kimoror.siam.rest;
 
 import jakarta.validation.Valid;
-import kimoror.siam.rest.requests.UserInfoRequest;
+import kimoror.siam.rest.dto.UserInfoDto;
 import kimoror.siam.rest.requests.ResumeRequest;
 import kimoror.siam.services.UserInfoService;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +22,8 @@ public class UserController {
     }
 
     @PostMapping("/addInfo")
-    public ResponseEntity<?> addUserInfo(@Valid @RequestBody UserInfoRequest userInfoRequest){
-        return userInfoService.addUserInfo(userInfoRequest);
+    public ResponseEntity<?> addUserInfo(@Valid @RequestBody UserInfoDto userInfoDto){
+        return userInfoService.addUserInfo(userInfoDto);
     }
 
     @PostMapping(value = "/uploadResume", consumes = "multipart/form-data")
@@ -35,4 +35,20 @@ public class UserController {
     public ResponseEntity<?> getResume(@RequestParam String resumeName){
         return userInfoService.getResumeByEmail(resumeName);
     }
+
+    @GetMapping(value = "/getAllResumeNameByEmail")
+    public ResponseEntity<?> getAllResumesByEmail(){
+        return userInfoService.getResumeNamesByEmail();
+    }
+
+    @DeleteMapping(value = "/deleteResume/{id}")
+    public ResponseEntity<?> deleteResume(@PathVariable String id){
+        return userInfoService.deleteResumeByObjectId(id);
+    }
+
+    @GetMapping("/getInfo")
+    public ResponseEntity<?> getInfo() {
+        return userInfoService.getInfo();
+    }
+
 }

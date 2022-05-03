@@ -32,4 +32,9 @@ public class PostController {
         return postService.deletePost(id);
     }
 
+    @GetMapping("/getPostByCurrentDay")
+    public ResponseEntity<?> getPostByCurrentDay(){
+        return postService.getPostsByCurrentDay();
+    }
+
 }

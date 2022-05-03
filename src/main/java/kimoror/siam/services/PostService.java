@@ -12,7 +12,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -71,5 +74,19 @@ public class PostService {
         postRepository.deleteById(id);
         return ResponseEntity.ok(new BaseResponse<>(ResponseValues.SUCCESSES.getErrorCode(),
                 ResponseValues.SUCCESSES.getErrorMessage()));
+    }
+
+    public ResponseEntity<?> getPostsByCurrentDay(){
+        List<Post> posts = postRepository.findAllByCreationDateGreaterThanEqual(Date.from(
+                LocalDate.now()
+                        .atStartOfDay()
+                        .atZone(ZoneId.systemDefault())
+                        .toInstant()
+            )
+        );
+
+        return ResponseEntity.ok(new BaseResponse<>(ResponseValues.SUCCESSES.getErrorCode(),
+                ResponseValues.SUCCESSES.getErrorMessage(), posts));
+
     }
 }

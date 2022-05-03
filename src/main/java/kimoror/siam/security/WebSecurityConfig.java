@@ -59,6 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //TODO отменить коментрий ниже
 //                .authorizeRequests().antMatchers("/siam/**").permitAll()
                 .authorizeRequests().antMatchers("/auth/**").permitAll()
+                .antMatchers("/post/getPostByCurrentDay").permitAll()
                 .antMatchers("/test/**").permitAll()
                 .anyRequest().authenticated();
 

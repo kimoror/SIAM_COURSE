@@ -5,6 +5,12 @@ plugins {
 group = "kimoror"
 version = "1.0-SNAPSHOT"
 
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "kimoror.siam.SIAM"
+    }
+}
+
 repositories {
     mavenCentral()
     maven {

@@ -16,4 +16,6 @@ public interface ResumeRepository extends MongoRepository<Resume, Long> {
 
     void deleteByUserEmailAndResumeName(String userEmail, String resumeName);
 
+    Optional<Resume> findFirstByUserEmailOrderByCreationDateDesc(String userEmail);
+
 }

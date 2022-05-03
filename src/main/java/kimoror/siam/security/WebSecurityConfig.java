@@ -60,6 +60,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .authorizeRequests().antMatchers("/siam/**").permitAll()
                 .authorizeRequests().antMatchers("/auth/**").permitAll()
                 .antMatchers("/post/getPostByCurrentDay").permitAll()
+                .antMatchers("/user/getInfoById/**").permitAll()
+                .antMatchers("/user/getLastResume/**").permitAll()
                 .antMatchers("/test/**").permitAll()
                 .anyRequest().authenticated();
 

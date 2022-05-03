@@ -80,6 +80,23 @@ public class UserInfoService {
         }
     }
 
+    public ResponseEntity<?> getLastResumeByEmail(String email) {
+
+
+        Optional<Resume> resumeOpt = resumeRepository.findFirstByUserEmailOrderByCreationDateDesc(email);
+
+        if (resumeOpt.isPresent()) {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_PDF);
+            return new ResponseEntity<>(resumeOpt.get().getFile(), headers, HttpStatus.OK);
+        } else {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            return new ResponseEntity<>(new BaseResponse<>(ResponseValues.CONTENT_NOT_FOUND.getErrorCode(),
+                    ResponseValues.CONTENT_NOT_FOUND.getErrorMessage()), headers, HttpStatus.NOT_FOUND);
+        }
+    }
+
     public ResponseEntity<?> getResumeNamesByEmail() {
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
@@ -132,6 +149,16 @@ public class UserInfoService {
             return new ResponseEntity<>(new BaseResponse<>(ResponseValues.CURRENT_USER_NOT_FOUND.getErrorCode(),
                     ResponseValues.CURRENT_USER_NOT_FOUND.getErrorMessage()), headers, HttpStatus.BAD_GATEWAY);
         }
+
+        UserInfo userInfo = userInfoRepository.getById(id);
+
+        UserInfoDto userInfoDto = mapper.userInfoToDto(userInfo);
+
+        return ResponseEntity.ok(new BaseResponse<>(ResponseValues.SUCCESSES.getErrorCode(),
+                ResponseValues.SUCCESSES.getErrorMessage(), userInfoDto));
+    }
+
+    public ResponseEntity<?> getInfo(Long id) {
 
         UserInfo userInfo = userInfoRepository.getById(id);
 

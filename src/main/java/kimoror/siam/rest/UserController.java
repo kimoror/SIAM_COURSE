@@ -36,6 +36,11 @@ public class UserController {
         return userInfoService.getResumeByEmail(resumeName);
     }
 
+    @GetMapping(value = "/getLastResume/{email}")
+    public ResponseEntity<?> getLastResumeByEmail(@PathVariable String email){
+        return userInfoService.getLastResumeByEmail(email);
+    }
+
     @GetMapping(value = "/getAllResumeNameByEmail")
     public ResponseEntity<?> getAllResumesByEmail(){
         return userInfoService.getResumeNamesByEmail();
@@ -49,6 +54,11 @@ public class UserController {
     @GetMapping("/getInfo")
     public ResponseEntity<?> getInfo() {
         return userInfoService.getInfo();
+    }
+
+    @GetMapping("/getInfoById/{id}")
+    public ResponseEntity<?> getInfo(@PathVariable Long id) {
+        return userInfoService.getInfo(id);
     }
 
 }

@@ -11,6 +11,12 @@ tasks.withType<Jar> {
     }
 }
 
+java {
+    withSourcesJar()
+}
+
+tasks.findByName("build")?.mustRunAfter("clean")
+
 repositories {
     mavenCentral()
     maven {

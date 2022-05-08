@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: '${SPRING_DATASOURCE_URL}'
+    username: '${SPRING_DATASOURCE_USERNAME}'
+    password: '${SPRING_DATASOURCE_PASSWORD}'
+  data:
+    mongodb:
+      uri: '${SPRING_DATA_MONGODB_URI}'
+      database: '${SPRING_DATA_MONGODB_DATABASE}'
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    properties:
+      hibernate:
+        default_schema: siam
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 15MB
+kimoror:
+  siam:
+    jwtSecret: '${KIMOROR.SIAM.JWTSECRET}'
+    jwtExpirationMs: '${KIMOROR.SIAM.JWTEXPIRATIONMS}'
+server:
+  port: '8080'
+  servlet:
+    context-path: '${SERVER_CONTEXT_PATH}'

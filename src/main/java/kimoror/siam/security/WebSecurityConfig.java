@@ -58,11 +58,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 //TODO отменить коментрий ниже
 //                .authorizeRequests().antMatchers("/siam/**").permitAll()
-                .authorizeRequests().antMatchers("/siam/auth/**").permitAll()
-                .antMatchers("/siam/post/getPostByCurrentDay").permitAll()
-                .antMatchers("/siam/user/getInfoById/**").permitAll()
-                .antMatchers("/siam/user/getLastResume/**").permitAll()
-                .antMatchers("/siam/test/**").permitAll()
+                .authorizeRequests().antMatchers("/auth/**").permitAll()
+                .antMatchers("/post/getPostByCurrentDay").permitAll()
+                .antMatchers("/user/getInfoById/**").permitAll()
+                .antMatchers("/user/getLastResume/**").permitAll()
+                .antMatchers("/test/**").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokeFilter(), UsernamePasswordAuthenticationFilter.class);

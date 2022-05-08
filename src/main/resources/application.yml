@@ -23,5 +23,3 @@ kimoror:
     jwtExpirationMs: '${KIMOROR.SIAM.JWTEXPIRATIONMS}'
 server:
   port: '8080'
-  servlet:
-    context-path: '${SERVER_CONTEXT_PATH}'

@@ -1,4 +1,4 @@
-package kimoror.siam.repositories;
+package kimoror.siam.repositories.mongo;
 
 import kimoror.siam.models.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;

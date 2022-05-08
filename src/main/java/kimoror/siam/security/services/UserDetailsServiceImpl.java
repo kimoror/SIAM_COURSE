@@ -1,7 +1,7 @@
 package kimoror.siam.security.services;
 
 import kimoror.siam.models.User;
-import kimoror.siam.repositories.UserRepository;
+import kimoror.siam.repositories.jpa.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

@@ -2,9 +2,9 @@ package siam.services;
 
 import kimoror.siam.models.Role;
 import kimoror.siam.models.ERole;
-import kimoror.siam.repositories.RoleRepository;
-import kimoror.siam.repositories.UserInfoRepository;
-import kimoror.siam.repositories.UserRepository;
+import kimoror.siam.repositories.jpa.RoleRepository;
+import kimoror.siam.repositories.jpa.UserInfoRepository;
+import kimoror.siam.repositories.jpa.UserRepository;
 import kimoror.siam.rest.requests.SignupRequest;
 import kimoror.siam.rest.responses.ResponseValues;
 import kimoror.siam.security.jwt.JwtUtils;

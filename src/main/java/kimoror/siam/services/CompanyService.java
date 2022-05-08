@@ -1,7 +1,7 @@
 package kimoror.siam.services;
 
 import kimoror.siam.models.Company;
-import kimoror.siam.repositories.CompanyRepository;
+import kimoror.siam.repositories.jpa.CompanyRepository;
 import kimoror.siam.rest.requests.CompanyRequest;
 import kimoror.siam.rest.responses.BaseResponse;
 import kimoror.siam.rest.responses.ResponseValues;

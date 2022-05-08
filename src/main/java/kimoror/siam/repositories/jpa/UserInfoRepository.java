@@ -1,4 +1,4 @@
-package kimoror.siam.repositories;
+package kimoror.siam.repositories.jpa;
 
 import kimoror.siam.models.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;

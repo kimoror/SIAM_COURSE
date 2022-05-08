@@ -1,7 +1,7 @@
 package kimoror.siam.services;
 
 import kimoror.siam.models.Post;
-import kimoror.siam.repositories.PostRepository;
+import kimoror.siam.repositories.mongo.PostRepository;
 import kimoror.siam.rest.requests.PostRequest;
 import kimoror.siam.rest.responses.BaseResponse;
 import kimoror.siam.rest.responses.ResponseValues;

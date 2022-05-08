@@ -5,13 +5,6 @@ plugins {
 group = "kimoror"
 version = "1.0-SNAPSHOT"
 
-tasks.withType<Jar> {
-    manifest {
-        attributes["Main-Class"] = "kimoror.siam.SIAM"
-    }
-}
-
-tasks.findByName("build")?.mustRunAfter("clean")
 
 repositories {
     mavenCentral()
@@ -21,7 +14,9 @@ repositories {
     }
 }
 
+
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter:2.5.6")
     implementation("org.springframework.boot:spring-boot-starter-web:2.5.6")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.5.6")
     implementation("jakarta.validation:jakarta.validation-api:3.0.0")
@@ -42,3 +37,28 @@ dependencies {
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "kimoror.siam.SIAM"
+    }
+}
+
+val fatJar = task("fatJar", type = Jar::class) {
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes["Main-Class"] = "kimoror.siam.SIAM"
+    }
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    with(tasks.jar.get() as CopySpec)
+}
+
+tasks {
+    "build" {
+        dependsOn(fatJar)
+    }
+}
+
+tasks.findByName("build")?.mustRunAfter("clean")

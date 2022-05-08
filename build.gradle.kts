@@ -38,6 +38,7 @@ tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
 
+
 tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = "kimoror.siam.SIAM"

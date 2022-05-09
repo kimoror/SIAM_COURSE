@@ -161,8 +161,10 @@ public class UserInfoService {
     public ResponseEntity<?> getInfo(Long id) {
 
         UserInfo userInfo = userInfoRepository.getById(id);
+        String email = userService.getEmail(id);
 
         UserInfoDto userInfoDto = mapper.userInfoToDto(userInfo);
+        userInfoDto.setEmail(email);
 
         return ResponseEntity.ok(new BaseResponse<>(ResponseValues.SUCCESSES.getErrorCode(),
                 ResponseValues.SUCCESSES.getErrorMessage(), userInfoDto));

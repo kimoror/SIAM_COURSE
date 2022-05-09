@@ -34,4 +34,9 @@ public class UserService {
             return userIdOpt.get();
         }
     }
+
+    public String getEmail(Long id){
+        Optional<String> userEmailOpt = userRepository.getEmailById(id);
+        return userEmailOpt.orElse("");
+    }
 }

@@ -13,6 +13,7 @@ spring:
     properties:
       hibernate:
         default_schema: siam
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   servlet:
     multipart:
       max-file-size: 15MB

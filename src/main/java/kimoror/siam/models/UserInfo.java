@@ -75,7 +75,7 @@ public class UserInfo {
 
     public static UserInfo infoFromRequest(long id, UserInfoDto userInfoDto) throws ParseException {
         return new UserInfo(id, userInfoDto.getName(), userInfoDto.getSurname(), userInfoDto.getMiddleName(),
-                LocalDate.parse(userInfoDto.getName()), userInfoDto.getAddress(), userInfoDto.getStatus(),
+                LocalDate.parse(userInfoDto.getBirthday()), userInfoDto.getAddress(), userInfoDto.getStatus(),
                 userInfoDto.getCompany_id(), userInfoDto.getWorkPosition(), userInfoDto.getEducation(),
                 userInfoDto.getSchool(), userInfoDto.getUniversity(), userInfoDto.getPhoneNumber());
     }
